@@ -1,5 +1,7 @@
 package com.hello;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,7 @@ public class HttpRequestTest {
 	
 	@Test
 	public void greetingShouldReturnDefaultMessage() throws Exception {
-		asetThat(this.restTemplate)
+		assertThat(this.restTemplate.getForObject("http://localhost:"+port, String.class)).contains("Hello World");
 		
 	}
 }
